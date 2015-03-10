@@ -1,0 +1,12 @@
+{
+    "file_regex": "\\.asm$",
+    "working_dir": "$file_path",
+    "cmd": ["nasm -felf64 -o $file_base_name.o $file_base_name.asm && gcc -o $file_base_name $file_base_name.o driver64.o asm64_io.o"],
+    "shell": true,
+
+    "variants": {
+        "Run": {
+            "cmd": ["./$file_base_name"]
+        }
+    }
+}
