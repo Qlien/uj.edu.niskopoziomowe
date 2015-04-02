@@ -1,0 +1,23 @@
+%include "asm64_io.inc"
+
+section .bss
+
+section .data
+	
+section .text
+
+global asm_main
+
+asm_main:
+
+	enter 0, 0
+
+	call read_items_count
+	call read_items
+	call sort
+	call
+	print_items
+
+	xor eax, eax
+	leave
+	ret

@@ -1,0 +1,4 @@
+section .data
+
+	push rax
+	incr moo
