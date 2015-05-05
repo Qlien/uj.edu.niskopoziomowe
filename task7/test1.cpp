@@ -1,9 +1,11 @@
-long double moo() {
-    return 3.14;
-}
+#include <stdio.h>
+
+extern "C" int sum(int n, int *a);
 
 int main() {
-    long double x = moo();
+    int n = 5, a[] = { 1, 2, 7, 9, -4 };
+
+    printf("sum(a) = %d\n", sum(n, a));
 
     return 0;
 }
