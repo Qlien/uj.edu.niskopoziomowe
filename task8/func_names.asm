@@ -1,17 +1,18 @@
 	.file	"func_names.cpp"
+	.intel_syntax noprefix
 	.text
 	.globl	_Z6rotateji
 	.type	_Z6rotateji, @function
 _Z6rotateji:
 .LFB0:
 	.cfi_startproc
-	pushl	%ebp
+	push	ebp
 	.cfi_def_cfa_offset 8
 	.cfi_offset 5, -8
-	movl	%esp, %ebp
+	mov	ebp, esp
 	.cfi_def_cfa_register 5
-	movl	$0, %eax
-	popl	%ebp
+	mov	eax, 0
+	pop	ebp
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret
@@ -23,15 +24,15 @@ _Z6rotateji:
 _Z6rotatehi:
 .LFB1:
 	.cfi_startproc
-	pushl	%ebp
+	push	ebp
 	.cfi_def_cfa_offset 8
 	.cfi_offset 5, -8
-	movl	%esp, %ebp
+	mov	ebp, esp
 	.cfi_def_cfa_register 5
-	subl	$4, %esp
-	movl	8(%ebp), %eax
-	movb	%al, -4(%ebp)
-	movl	$97, %eax
+	sub	esp, 4
+	mov	eax, DWORD PTR [ebp+8]
+	mov	BYTE PTR [ebp-4], al
+	mov	eax, 97
 	leave
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
@@ -44,12 +45,12 @@ _Z6rotatehi:
 _Z6kopiujPiS_i:
 .LFB2:
 	.cfi_startproc
-	pushl	%ebp
+	push	ebp
 	.cfi_def_cfa_offset 8
 	.cfi_offset 5, -8
-	movl	%esp, %ebp
+	mov	ebp, esp
 	.cfi_def_cfa_register 5
-	popl	%ebp
+	pop	ebp
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret
@@ -61,17 +62,85 @@ _Z6kopiujPiS_i:
 _Z5zerujPii:
 .LFB3:
 	.cfi_startproc
-	pushl	%ebp
+	push	ebp
 	.cfi_def_cfa_offset 8
 	.cfi_offset 5, -8
-	movl	%esp, %ebp
+	mov	ebp, esp
 	.cfi_def_cfa_register 5
-	popl	%ebp
+	pop	ebp
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret
 	.cfi_endproc
 .LFE3:
 	.size	_Z5zerujPii, .-_Z5zerujPii
+	.globl	_Z4copyPiS_i
+	.type	_Z4copyPiS_i, @function
+_Z4copyPiS_i:
+.LFB4:
+	.cfi_startproc
+	push	ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	mov	ebp, esp
+	.cfi_def_cfa_register 5
+	pop	ebp
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+.LFE4:
+	.size	_Z4copyPiS_i, .-_Z4copyPiS_i
+	.globl	_Z8additionPiiS_iRS_S_
+	.type	_Z8additionPiiS_iRS_S_, @function
+_Z8additionPiiS_iRS_S_:
+.LFB5:
+	.cfi_startproc
+	push	ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	mov	ebp, esp
+	.cfi_def_cfa_register 5
+	pop	ebp
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+.LFE5:
+	.size	_Z8additionPiiS_iRS_S_, .-_Z8additionPiiS_iRS_S_
+	.globl	_Z14multiplicationPiiS_iRS_S_
+	.type	_Z14multiplicationPiiS_iRS_S_, @function
+_Z14multiplicationPiiS_iRS_S_:
+.LFB6:
+	.cfi_startproc
+	push	ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	mov	ebp, esp
+	.cfi_def_cfa_register 5
+	pop	ebp
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+.LFE6:
+	.size	_Z14multiplicationPiiS_iRS_S_, .-_Z14multiplicationPiiS_iRS_S_
+	.globl	_Z8divisionPiiS_iRS_S_
+	.type	_Z8divisionPiiS_iRS_S_, @function
+_Z8divisionPiiS_iRS_S_:
+.LFB7:
+	.cfi_startproc
+	push	ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	mov	ebp, esp
+	.cfi_def_cfa_register 5
+	pop	ebp
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+.LFE7:
+	.size	_Z8divisionPiiS_iRS_S_, .-_Z8divisionPiiS_iRS_S_
 	.ident	"GCC: (Ubuntu 4.9.1-16ubuntu6) 4.9.1"
 	.section	.note.GNU-stack,"",@progbits
