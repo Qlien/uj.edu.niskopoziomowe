@@ -17,10 +17,12 @@ _Z6kopiujPiS_i:
 
 _Z6kopiujPiS_i_loop:
 
-    lodsd
-    stosd
+    ; lodsd
+    ; stosd
 
-    loop _Z6kopiujPiS_i_loop
+    ; loop _Z6kopiujPiS_i_loop
+
+    rep movsd ; the same
 
     leave
     ret
@@ -37,9 +39,11 @@ _Z5zerujPii:
 
 _Z5zerujPii_loop:
 
-    stosd
+    ; stosd
 
-    loop _Z5zerujPii_loop
+    ; loop _Z5zerujPii_loop
+
+    rep stosd ; the same
 
     leave
     ret

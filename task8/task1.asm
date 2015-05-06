@@ -14,18 +14,19 @@ rotate:
 
     mov eax, n
     mov ecx, x
+    rol eax, cl
 
-rotate_loop:
+; rotate_loop:
 
     ; shl low_word, 1
     ; rcl high_word, 1
     ; concat high_word, low_word
 
-    mov ebx, eax
-    and ebx, 0xffff0000
-    and eax, 0x0000ffff
-    shl eax, 1
-    rcl ebx, 1
+    ; mov ebx, eax
+    ; and ebx, 0xffff0000
+    ; and eax, 0x0000ffff
+    ; shl eax, 1
+    ; rcl ebx, 1
 
 ;     mov edx, eax ; edx = N
 ;     and edx, 0x1000 ; edx = high bit (CF)
@@ -42,7 +43,7 @@ rotate_loop:
 ;     or ebx, eax ; ebx = concat high_word, low_word
 ;     mov eax, ebx ; eax = ebx
 
-    loop rotate_loop
+    ; loop rotate_loop
 
     leave
     ret
