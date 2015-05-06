@@ -45,8 +45,8 @@ int main() {
     int* a = 0, *b = 0, *c = 0;
     int a_len = 0, b_len = 0, c_len = 0;
 
-    str2bigint("999999999999", a, &a_len);
-    str2bigint("1000000000000", b, &b_len);
+    str2bigint("47253", a, &a_len);
+    str2bigint("3579", b, &b_len);
     int2bigint(3, c, &c_len);
 
     printf("a = %s\n", bigint2str(a, a_len));

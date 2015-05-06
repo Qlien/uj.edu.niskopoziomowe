@@ -4,6 +4,25 @@ section .text
 
 extern malloc
 
+; void zero(int *dst, int n);
+global _Z4zeroPii
+_Z4zeroPii:
+
+    enter 0, 0
+
+    %define dst [ebp + 8]
+    %define n [ebp + 12]
+
+    mov ecx, n
+    imul ecx, 4 ; integer copy
+    mov edi, dst
+    mov eax, 0
+
+    rep stosd
+
+    leave
+    ret
+
 ; void copy(int *dst, int *src, int n);
 global _Z4copyPiS_i
 _Z4copyPiS_i:
@@ -153,20 +172,26 @@ addition_just_exit:
 global _Z14multiplicationPiiS_iRS_S_
 _Z14multiplicationPiiS_iRS_S_:
 
-    enter 0, 0
+    enter 16, 0 ; 4 bytes for int* tmp, 4 bytes for int overflow, 4 - for tmp2, 4 - for tmp3
 
-    %define p_x [ebp + 8]
-    %define x_len [ebp + 12]
-    %define p_y [ebp + 16]
-    %define y_len [ebp + 20]
-    %define p_z [ebp + 24]
-    %define p_z_len [ebp + 28]
+    %define p_x dword [ebp + 8]
+    %define x_len dword [ebp + 12]
+    %define p_y dword [ebp + 16]
+    %define y_len dword [ebp + 20]
+    %define p_z dword [ebp + 24]
+    %define p_z_len dword [ebp + 28]
+    %define overflow dword [ebp - 4]
+    %define p_tmp dword [ebp - 8]
+    %define p_tmp2 dword [ebp - 12]
+    %define p_tmp3 dword [ebp - 16]
 
     ; allocate memory for result
     ; get max length for z. z_len (max) = x_len + y_len
     mov eax, p_z_len
-    mov [eax], x_len
-    add [eax], y_len
+    mov ebx, x_len
+    mov [eax], ebx
+    mov ebx, y_len
+    add [eax], ebx
 
     imul eax, 4
     push eax ; bytes to allocate
@@ -176,7 +201,95 @@ _Z14multiplicationPiiS_iRS_S_:
     mov eax, p_z
     mov [eax], edx ; z = malloc(...)
 
-    ; TODO: rock the magic!
+    ; allocate mem for p_tmp variable to store mid-results
+    ; its size is the same as result's
+    push eax ; bytes to allocate
+    call malloc ; call malloc()
+    add esp, 4 ; undo push
+    mov edx, eax ; save returned address from malloc
+    mov eax, p_tmp
+    mov [eax], edx ; tmp = malloc(...)
+
+    ; TODO: allocate memory for tmp2
+    ; TODO: allocate memory for tmp3
+    ; TODO: zero tmp2
+    ; TODO: zero tmp3
+
+    ; loop init
+    mov edi, p_tmp
+    mov ecx, 0 ; i = 0
+
+multiplication_y_digit_loop:
+
+    mov esi, p_y ; iterating through y
+
+    ; zero tmp var
+    mov eax, p_tmp
+    push eax ; dst
+    mov eax, p_z_len
+    mov eax, [eax]
+    push eax ; len
+    call _Z4zeroPii
+
+    ; trailing zero for each operation
+    mov eax, ecx
+    imul eax, 4
+    add edi, eax
+
+    ; tmp[i] = y[i]
+    mov eax, [esi]
+    mov [edi], eax
+
+    ; loop init
+    push ecx ; save i
+
+    mov esi, p_x ; iterating through x
+    mov ecx, 0 ; t = 0
+    ; lea eax, overflow ; we can not directly write into a variable
+    ; mov [eax], dword 0
+    mov overflow, dword 0
+
+multiplication_x_digit_loop:
+
+    mov eax, p_x ; EAX = x
+    mov ebx, ecx
+    imul ebx, 4 ; byte offset for t-th element
+    add eax, ebx
+    mov eax, [eax] ; EAX = x[t]
+
+    mov ebx, [edi] ; EBX = tmp[i]
+    imul eax, ebx ; EAX = x[t] * tmp[i]
+    mov ebx, overflow
+    add eax, ebx ; EAX = (x[t] * tmp[i]) + overflow
+    mov ebx, 10
+    div ebx ; EAX = EAX div 10; EDX = EAX mod 10
+
+    mov [edi], edx ; tmp[i] = EAX mod 10
+    ; mov ebx, overflow ; EBX = overflow
+    ; add edx, [ebx] ; EDX = EAX div 10 + overflow
+    ; lea ebx, overflow ; EBX = *overflow
+    ; mov [ebx], edx ; *overflow = EDX
+    add overflow, edx
+
+    inc ecx
+
+    mov eax, x_len
+    cmp ecx, eax
+    jl multiplication_x_digit_loop ; if t < x_len then continue
+
+multiplication_next_i:
+
+    ; continue i loop
+    pop ecx ; restore i
+
+    ; TODO: tmp3 = tmp + tmp2
+    ; TODO: tmp2 = tmp3
+
+    inc ecx
+
+    mov eax, y_len
+    cmp ecx, eax
+    jl multiplication_y_digit_loop ; if i < y_len then continue
 
     leave
     ret
