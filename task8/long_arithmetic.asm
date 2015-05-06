@@ -15,15 +15,11 @@ _Z4copyPiS_i:
     %define n [ebp + 16]
 
     mov ecx, n
+    imul ecx, 4 ; integer copy
     mov edi, dst
     mov esi, src
 
-copy_loop:
-
-    lodsd
-    stosd
-
-    loop copy_loop
+    rep movsd
 
     leave
     ret
@@ -158,6 +154,29 @@ global _Z14multiplicationPiiS_iRS_S_
 _Z14multiplicationPiiS_iRS_S_:
 
     enter 0, 0
+
+    %define p_x [ebp + 8]
+    %define x_len [ebp + 12]
+    %define p_y [ebp + 16]
+    %define y_len [ebp + 20]
+    %define p_z [ebp + 24]
+    %define p_z_len [ebp + 28]
+
+    ; allocate memory for result
+    ; get max length for z. z_len (max) = x_len + y_len
+    mov eax, p_z_len
+    mov [eax], x_len
+    add [eax], y_len
+
+    imul eax, 4
+    push eax ; bytes to allocate
+    call malloc ; call malloc()
+    add esp, 4 ; undo push
+    mov edx, eax ; save returned address from malloc
+    mov eax, p_z
+    mov [eax], edx ; z = malloc(...)
+
+    ; TODO: rock the magic!
 
     leave
     ret
