@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string.h>
 
+// http://www.nasm.us/doc/nasmdoc9.html
+// http://forum.codecall.net/topic/65232-assembly-local-variables-and-functions-win32-nasm/
+
 #define max(a, b) (a > b) ? a : b
 
 // kopiuje n liczb typu int z zrodla do celu
