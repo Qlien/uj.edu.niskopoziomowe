@@ -16,3 +16,4 @@ void copy(int* dst, int* src, int n) {}
 void addition(int* x, int x_len, int* y, int y_len, int* &z, int* z_len) {}
 void multiplication(int* x, int x_len, int* y, int y_len, int* &z, int* z_len) {}
 void division(int* x, int x_len, int* y, int y_len, int* &z, int* z_len) {}
+void sumuj_unaligned(int n, float * a, float *b , float *c) {}

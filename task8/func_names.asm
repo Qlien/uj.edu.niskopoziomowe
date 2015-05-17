@@ -1,20 +1,20 @@
 	.file	"func_names.cpp"
-	.intel_syntax noprefix
 	.text
 	.globl	_Z6rotateji
 	.type	_Z6rotateji, @function
 _Z6rotateji:
 .LFB0:
 	.cfi_startproc
-	push	ebp
-	.cfi_def_cfa_offset 8
-	.cfi_offset 5, -8
-	mov	ebp, esp
-	.cfi_def_cfa_register 5
-	mov	eax, 0
-	pop	ebp
-	.cfi_restore 5
-	.cfi_def_cfa 4, 4
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movl	%edi, -4(%rbp)
+	movl	%esi, -8(%rbp)
+	movl	$0, %eax
+	popq	%rbp
+	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE0:
@@ -24,18 +24,17 @@ _Z6rotateji:
 _Z6rotatehi:
 .LFB1:
 	.cfi_startproc
-	push	ebp
-	.cfi_def_cfa_offset 8
-	.cfi_offset 5, -8
-	mov	ebp, esp
-	.cfi_def_cfa_register 5
-	sub	esp, 4
-	mov	eax, DWORD PTR [ebp+8]
-	mov	BYTE PTR [ebp-4], al
-	mov	eax, 97
-	leave
-	.cfi_restore 5
-	.cfi_def_cfa 4, 4
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movl	%edi, %eax
+	movl	%esi, -8(%rbp)
+	movb	%al, -4(%rbp)
+	movl	$97, %eax
+	popq	%rbp
+	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE1:
@@ -45,14 +44,16 @@ _Z6rotatehi:
 _Z6kopiujPiS_i:
 .LFB2:
 	.cfi_startproc
-	push	ebp
-	.cfi_def_cfa_offset 8
-	.cfi_offset 5, -8
-	mov	ebp, esp
-	.cfi_def_cfa_register 5
-	pop	ebp
-	.cfi_restore 5
-	.cfi_def_cfa 4, 4
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movq	%rdi, -8(%rbp)
+	movq	%rsi, -16(%rbp)
+	movl	%edx, -20(%rbp)
+	popq	%rbp
+	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE2:
@@ -62,14 +63,15 @@ _Z6kopiujPiS_i:
 _Z5zerujPii:
 .LFB3:
 	.cfi_startproc
-	push	ebp
-	.cfi_def_cfa_offset 8
-	.cfi_offset 5, -8
-	mov	ebp, esp
-	.cfi_def_cfa_register 5
-	pop	ebp
-	.cfi_restore 5
-	.cfi_def_cfa 4, 4
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movq	%rdi, -8(%rbp)
+	movl	%esi, -12(%rbp)
+	popq	%rbp
+	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE3:
@@ -79,14 +81,16 @@ _Z5zerujPii:
 _Z4copyPiS_i:
 .LFB4:
 	.cfi_startproc
-	push	ebp
-	.cfi_def_cfa_offset 8
-	.cfi_offset 5, -8
-	mov	ebp, esp
-	.cfi_def_cfa_register 5
-	pop	ebp
-	.cfi_restore 5
-	.cfi_def_cfa 4, 4
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movq	%rdi, -8(%rbp)
+	movq	%rsi, -16(%rbp)
+	movl	%edx, -20(%rbp)
+	popq	%rbp
+	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE4:
@@ -96,14 +100,19 @@ _Z4copyPiS_i:
 _Z8additionPiiS_iRS_S_:
 .LFB5:
 	.cfi_startproc
-	push	ebp
-	.cfi_def_cfa_offset 8
-	.cfi_offset 5, -8
-	mov	ebp, esp
-	.cfi_def_cfa_register 5
-	pop	ebp
-	.cfi_restore 5
-	.cfi_def_cfa 4, 4
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movq	%rdi, -8(%rbp)
+	movl	%esi, -12(%rbp)
+	movq	%rdx, -24(%rbp)
+	movl	%ecx, -16(%rbp)
+	movq	%r8, -32(%rbp)
+	movq	%r9, -40(%rbp)
+	popq	%rbp
+	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE5:
@@ -113,14 +122,19 @@ _Z8additionPiiS_iRS_S_:
 _Z14multiplicationPiiS_iRS_S_:
 .LFB6:
 	.cfi_startproc
-	push	ebp
-	.cfi_def_cfa_offset 8
-	.cfi_offset 5, -8
-	mov	ebp, esp
-	.cfi_def_cfa_register 5
-	pop	ebp
-	.cfi_restore 5
-	.cfi_def_cfa 4, 4
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movq	%rdi, -8(%rbp)
+	movl	%esi, -12(%rbp)
+	movq	%rdx, -24(%rbp)
+	movl	%ecx, -16(%rbp)
+	movq	%r8, -32(%rbp)
+	movq	%r9, -40(%rbp)
+	popq	%rbp
+	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE6:
@@ -130,17 +144,42 @@ _Z14multiplicationPiiS_iRS_S_:
 _Z8divisionPiiS_iRS_S_:
 .LFB7:
 	.cfi_startproc
-	push	ebp
-	.cfi_def_cfa_offset 8
-	.cfi_offset 5, -8
-	mov	ebp, esp
-	.cfi_def_cfa_register 5
-	pop	ebp
-	.cfi_restore 5
-	.cfi_def_cfa 4, 4
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movq	%rdi, -8(%rbp)
+	movl	%esi, -12(%rbp)
+	movq	%rdx, -24(%rbp)
+	movl	%ecx, -16(%rbp)
+	movq	%r8, -32(%rbp)
+	movq	%r9, -40(%rbp)
+	popq	%rbp
+	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE7:
 	.size	_Z8divisionPiiS_iRS_S_, .-_Z8divisionPiiS_iRS_S_
+	.globl	_Z15sumuj_unalignediPfS_S_
+	.type	_Z15sumuj_unalignediPfS_S_, @function
+_Z15sumuj_unalignediPfS_S_:
+.LFB8:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movl	%edi, -4(%rbp)
+	movq	%rsi, -16(%rbp)
+	movq	%rdx, -24(%rbp)
+	movq	%rcx, -32(%rbp)
+	popq	%rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE8:
+	.size	_Z15sumuj_unalignediPfS_S_, .-_Z15sumuj_unalignediPfS_S_
 	.ident	"GCC: (Ubuntu 4.9.1-16ubuntu6) 4.9.1"
 	.section	.note.GNU-stack,"",@progbits
